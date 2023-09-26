@@ -40,18 +40,45 @@ $hotels = [
 ];
 
     $data = $_GET ?? "";
+    // $has_parking = $_GET ["parking"] ?? " " ;
+    
+    $has_parking = "" ;
+    
+    $final_hotels = [];
 
     if (!empty($data)) {
-       var_dump($data) ;
+      
+      if ($_GET["parking"] === "true" ) {
+        $has_parking = true;
+        
+      } else if ($_GET["parking"] === "false" ) {
+        $has_parking = false;
+        
+      } else {
+        $has_parking = "" ;
+        
+      }
+
+
+
+
+      //  var_dump($data) ;
       foreach($hotels as $hotel) {
-      var_dump( in_array($data, $hotel )) ;
+        // var_dump($has_parking) ;
+        // var_dump($hotel) ;
+        if (str_contains( $hotel["parking"] , $has_parking )) {
+          $final_hotels[] = $hotel ;
+          
+        }
+        
+        
       }
     }
-
+    
+    var_dump($final_hotels) ;
 
     
-    $has_parking = $_GET ["parking"] ?? " " ;
-    echo $has_parking ;
+    
   
 ?>
 
@@ -101,7 +128,7 @@ $hotels = [
             </tr>
         </thead>
         <tbody>
-            <?php foreach($hotels as $hotel) { ?>
+            <?php foreach($final_hotels as $hotel) { ?>
             <tr>
                 <?php foreach($hotel as $element) { ?>
                 <td>
