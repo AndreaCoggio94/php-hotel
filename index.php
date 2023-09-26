@@ -40,6 +40,13 @@
 
     ];
 
+
+    foreach($hotels as $hotel) {
+      foreach($hotel as $element) {
+        echo " " .  $element ;
+      }
+    }
+
 ?>
 
 
