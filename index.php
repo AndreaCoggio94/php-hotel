@@ -41,14 +41,9 @@
     ];
 
     
-
-
-    // foreach($hotels as $hotel) {
-    //   foreach($hotel as $element) {
-    //     echo " " .  $element ;
-    //   }
-    // }
-
+    $has_parking = $_GET ["parking"] ?? " " ;
+    echo $has_parking ;
+  
 ?>
 
 
@@ -75,15 +70,25 @@
 </head>
 
 <body>
+    <form method="GET" action="#" class="row">
+
+        <select name="parking" class="form-select col" aria-label="Default select example">
+            <option selected value=""> Vuoi un hotel con parcheggio? </option>
+            <option value="true">Si</option>
+            <option value="false">No</option>
+
+        </select>
+        <button class="btn btn-success col-2" type="submit"> cerca </button>
+    </form>
     <table class="table">
         <thead>
             <tr>
 
-                <th scoper="col">name</th>
-                <th scoper="col">description</th>
-                <th scoper="col">parking</th>
-                <th scoper="col">vote</th>
-                <th scoper="col">distance to center</th>
+                <th scoper="col">nome</th>
+                <th scoper="col">descrizione</th>
+                <th scoper="col">parcheggio</th>
+                <th scoper="col">voto</th>
+                <th scoper="col">distanza dal centro</th>
 
             </tr>
         </thead>
@@ -92,7 +97,15 @@
             <tr>
                 <?php foreach($hotel as $element) { ?>
                 <td>
-                    <?php echo   $element ; ?>
+                    <?php
+
+                    if ($element === true) {
+                      echo "si" ;
+                    } else if ($element === false) {
+                      echo "no" ;
+                    } else 
+                     echo   $element ; 
+                     ?>
                 </td>
                 <?php }
     } ?>
