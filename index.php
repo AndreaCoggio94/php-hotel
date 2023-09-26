@@ -43,7 +43,8 @@ $hotels = [
     // $has_parking = $_GET ["parking"] ?? " " ;
     
     $has_parking = "" ;
-    
+    $request_vote = intval($_GET["vote"] ?? "") ;
+    // var_dump($request_vote);
     $final_hotels = [];
 
     if (!empty($data)) {
@@ -66,17 +67,17 @@ $hotels = [
       foreach($hotels as $hotel) {
         // var_dump($has_parking) ;
         // var_dump($hotel) ;
-        if ( $hotel["parking"] == $has_parking ) {
+        if ( $hotel["parking"] == $has_parking && $hotel["vote"] >= $request_vote ) {
           $final_hotels[] = $hotel ; 
         } else {
-            $final_hotels[] = $hotel ; 
+            // $final_hotels[] = "" ; 
         }
         
         
       }
     }
     
-    var_dump($final_hotels) ;
+//    var_dump($final_hotels)
 
     
     
@@ -113,11 +114,19 @@ $hotels = [
             <option selected value=""> Vuoi un hotel con parcheggio? </option>
             <option value="true">Si</option>
             <option value="false">No</option>
+        </select>
+        <select name="vote" class="form-select col" aria-label="Default select example">
+            <option selected value=""> A quante stelle vuoi l'hotel? </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
 
         </select>
         <button class="btn btn-success col-2" type="submit"> cerca </button>
     </form>
-    <?php if(!empty($data)) : ?>
+    <?php if(!empty($data) && !empty($final_hotels)) : ?>
     <table class="table">
         <thead>
             <tr>
@@ -147,6 +156,8 @@ $hotels = [
             </tr>
         </tbody>
     </table>
+    <?php else : ?>
+    <p>Nessun risultato corrisponde ai parametri scelti</p>
     <?php endif ; ?>
 
 </body>
