@@ -1,5 +1,12 @@
 <?php
 
+    $data = $_GET ?? "";
+
+    if (!empty($data)) {
+
+
+    }
+
     $hotels = [
 
         [
@@ -70,7 +77,7 @@
 </head>
 
 <body>
-    <form method="GET" action="#" class="row">
+    <form method="GET" class="row">
 
         <select name="parking" class="form-select col" aria-label="Default select example">
             <option selected value=""> Vuoi un hotel con parcheggio? </option>
@@ -80,16 +87,15 @@
         </select>
         <button class="btn btn-success col-2" type="submit"> cerca </button>
     </form>
+    <?php if(!empty($data)) : ?>
     <table class="table">
         <thead>
             <tr>
-
                 <th scoper="col">nome</th>
                 <th scoper="col">descrizione</th>
                 <th scoper="col">parcheggio</th>
                 <th scoper="col">voto</th>
                 <th scoper="col">distanza dal centro</th>
-
             </tr>
         </thead>
         <tbody>
@@ -98,7 +104,6 @@
                 <?php foreach($hotel as $element) { ?>
                 <td>
                     <?php
-
                     if ($element === true) {
                       echo "si" ;
                     } else if ($element === false) {
@@ -110,11 +115,9 @@
                 <?php }
     } ?>
             </tr>
-
-
         </tbody>
     </table>
-
+    <?php endif ; ?>
 
 </body>
 
