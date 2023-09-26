@@ -40,12 +40,14 @@
 
     ];
 
+    
 
-    foreach($hotels as $hotel) {
-      foreach($hotel as $element) {
-        echo " " .  $element ;
-      }
-    }
+
+    // foreach($hotels as $hotel) {
+    //   foreach($hotel as $element) {
+    //     echo " " .  $element ;
+    //   }
+    // }
 
 ?>
 
@@ -61,10 +63,6 @@
     <meta name="description" content="new exercise" />
     <!-- title -->
     <title>PHP Hotel</title>
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
@@ -77,7 +75,32 @@
 </head>
 
 <body>
+    <table class="table">
+        <thead>
+            <tr>
 
+                <th scoper="col">name</th>
+                <th scoper="col">description</th>
+                <th scoper="col">parking</th>
+                <th scoper="col">vote</th>
+                <th scoper="col">distance to center</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($hotels as $hotel) { ?>
+            <tr>
+                <?php foreach($hotel as $element) { ?>
+                <td>
+                    <?php echo   $element ; ?>
+                </td>
+                <?php }
+    } ?>
+            </tr>
+
+
+        </tbody>
+    </table>
 
 
 </body>
