@@ -66,9 +66,10 @@ $hotels = [
       foreach($hotels as $hotel) {
         // var_dump($has_parking) ;
         // var_dump($hotel) ;
-        if (str_contains( $hotel["parking"] , $has_parking )) {
-          $final_hotels[] = $hotel ;
-          
+        if ( $hotel["parking"] == $has_parking ) {
+          $final_hotels[] = $hotel ; 
+        } else {
+            $final_hotels[] = $hotel ; 
         }
         
         
